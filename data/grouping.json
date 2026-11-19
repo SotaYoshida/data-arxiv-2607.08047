@@ -1,0 +1,308 @@
+[
+ {
+  "id": "valence_p",
+  "label": "p (CK)",
+  "nqubits": 12,
+  "nonidentity_terms": 974,
+  "methods": {
+   "fc": {
+    "settings": 47,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 263,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 48,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "valence_sd",
+  "label": "sd (USDB)",
+  "nqubits": 24,
+  "nonidentity_terms": 12868,
+  "methods": {
+   "fc": {
+    "settings": 316,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 3572,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 381,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "valence_psd",
+  "label": "psd (YSOX)",
+  "nqubits": 36,
+  "nonidentity_terms": 36562,
+  "methods": {
+   "fc": {
+    "settings": 589,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 12496,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 766,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "valence_pf",
+  "label": "pf (GXPF1A)",
+  "nqubits": 40,
+  "nonidentity_terms": 82860,
+  "methods": {
+   "fc": {
+    "settings": 1136,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 21268,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 1429,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "valence_sdpf_mu_A42",
+  "label": "sdpf (SDPF-MU)",
+  "nqubits": 64,
+  "nonidentity_terms": 299024,
+  "methods": {
+   "fc": {
+    "settings": 2558,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 102418,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 3388,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "valence_sdpf_sdg_A42",
+  "label": "sd-pf-sdg",
+  "nqubits": 124,
+  "nonidentity_terms": 3763622,
+  "methods": {
+   "pairing_greedy": {
+    "settings": 17733,
+    "status": "computed"
+   },
+   "fc": {
+    "settings": 15705,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "nn_e0",
+  "label": "NN e=0",
+  "nqubits": 4,
+  "nonidentity_terms": 18,
+  "methods": {
+   "fc": {
+    "settings": 2,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 9,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 3,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "nn_e1",
+  "label": "NN e=1",
+  "nqubits": 16,
+  "nonidentity_terms": 1792,
+  "methods": {
+   "fc": {
+    "settings": 56,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 615,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 70,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "nn_e2",
+  "label": "NN e=2",
+  "nqubits": 40,
+  "nonidentity_terms": 57284,
+  "methods": {
+   "fc": {
+    "settings": 748,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 17027,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 1024,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "nn_e3",
+  "label": "NN e=3",
+  "nqubits": 80,
+  "nonidentity_terms": 766680,
+  "methods": {
+   "fc": {
+    "settings": 5246,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 205688,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 6031,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "nn_e4",
+  "label": "NN e=4",
+  "nqubits": 140,
+  "nonidentity_terms": 6180598,
+  "methods": {
+   "pairing_greedy": {
+    "settings": 23027,
+    "status": "computed"
+   },
+   "fc": {
+    "settings": 26189,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "nn_e5",
+  "label": "NN e=5",
+  "nqubits": 224,
+  "nonidentity_terms": 35470272,
+  "methods": {
+   "pairing_greedy": {
+    "settings": 68861,
+    "status": "computed"
+   },
+   "fc": {
+    "settings": null,
+    "status": "not_run"
+   }
+  }
+ },
+ {
+  "id": "nn_e6",
+  "label": "NN e=6",
+  "nqubits": 336,
+  "nonidentity_terms": 159642144,
+  "methods": {}
+ },
+ {
+  "id": "nn_e7",
+  "label": "NN e=7",
+  "nqubits": 480,
+  "nonidentity_terms": 598352536,
+  "methods": {}
+ },
+ {
+  "id": "nn_e8",
+  "label": "NN e=8",
+  "nqubits": 660,
+  "nonidentity_terms": 1944065842,
+  "methods": {}
+ },
+ {
+  "id": "nn_e9",
+  "label": "NN e=9",
+  "nqubits": 880,
+  "nonidentity_terms": 5631018552,
+  "methods": {}
+ },
+ {
+  "id": "3nf_e1_compact_common",
+  "label": "NN+3N e=1",
+  "nqubits": 16,
+  "nonidentity_terms": 51376,
+  "methods": {
+   "fc": {
+    "settings": 1004,
+    "status": "computed"
+   },
+   "qwc": {
+    "settings": 11983,
+    "status": "computed"
+   },
+   "pairing_greedy": {
+    "settings": 1807,
+    "status": "computed"
+   }
+  }
+ },
+ {
+  "id": "3nf_e2_compact_common",
+  "label": "NN+3N e=2",
+  "nqubits": 40,
+  "nonidentity_terms": 15343844,
+  "methods": {
+   "pairing_greedy": {
+    "settings": 76320,
+    "status": "computed"
+   },
+   "fc": {
+    "settings": null,
+    "status": "not_completed"
+   }
+  }
+ },
+ {
+  "id": "3nf_e3_compact_common",
+  "label": "NN+3N e=3",
+  "nqubits": 80,
+  "nonidentity_terms": 980709976,
+  "methods": {}
+ },
+ {
+  "id": "3nf_e4_compact_common",
+  "label": "NN+3N e=4",
+  "nqubits": 140,
+  "nonidentity_terms": 26651010918,
+  "methods": {}
+ }
+]
