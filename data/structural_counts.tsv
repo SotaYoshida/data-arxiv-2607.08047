@@ -1,22 +1,22 @@
 Interaction-type	modelspace	Nq	T-estimates-controlled	Num of Hterms	IZterms	emin	emax	e2max	e3max	count_kind	identity_included	source_sha256	julia_version	threads	Tgates_per_Rz
-valence NN	p	12	194800	975	79	1	1	2		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-valence NN	sd	24	2573600	12869	301	2	2	4		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-valence NN	pf	40	16572000	82861	821	3	3	6		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-valence NN	psd	36	7312400	36563	667	1	2	4		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-valence NN	sdpf	64	59804800	299025	2081	2	3	6		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-valence NN	pfsdg	100	300075600	1500379	5051	3	4	8		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=0	4	3600	19	11	0	0	0		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=1	16	358400	1793	137	0	1	2		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=2	40	11488800	57445	821	0	2	4		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=3	80	153412800	767065	3241	0	3	6		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=4	140	1236561200	6182807	9871	0	4	8		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=5	224	7094812800	35474065	25201	0	5	10		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=6	336	31930860800	159654305	56617	0	6	12		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=7	480	119674209600	598371049	115441	0	7	14		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=8	660	388822787600	1944113939	218131	0	8	16		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=9	880	1126219648000	5631098241	387641	0	9	18		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN	emax=10	1144	2968590543200	14842952717	654941	0	10	20		symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN3NF	1_2_3	16	10275200	51377	697	0	1	2	3	symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN3NF	2_4_6	40	3069274400	15346373	10701	0	2	4	6	symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN3NF	3_6_9	80	196155811200	980779057	85401	0	3	6	9	symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
-NN3NF	4_8_12	140	5330960582800	26654802915	457451	0	4	8	12	symmetry_structural	true	2ee8e143e1e72e817ebc2a43a5ae3ecde4dbb0f6b0974d1ef6f3f382f37ec1a5	1.12.7	2	100
+valence NN	p	12	194800	975	79	1	1	2		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+valence NN	sd	24	2573600	12869	301	2	2	4		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+valence NN	pf	40	16572000	82861	821	3	3	6		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+valence NN	psd	36	7312400	36563	667	1	2	4		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+valence NN	sdpf	64	59804800	299025	2081	2	3	6		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+valence NN	sdpfsdg	124	752871600	3764359	7751	2	4	8		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=0	4	3600	19	11	0	0	0		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=1	16	358400	1793	137	0	1	2		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=2	40	11488800	57445	821	0	2	4		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=3	80	153412800	767065	3241	0	3	6		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=4	140	1236561200	6182807	9871	0	4	8		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=5	224	7094812800	35474065	25201	0	5	10		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=6	336	31930860800	159654305	56617	0	6	12		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=7	480	119674209600	598371049	115441	0	7	14		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=8	660	388822787600	1944113939	218131	0	8	16		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=9	880	1126219648000	5631098241	387641	0	9	18		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN	emax=10	1144	2968590543200	14842952717	654941	0	10	20		symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN3NF	1_2_3	16	10275200	51377	697	0	1	2	3	symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN3NF	2_4_6	40	3069274400	15346373	10701	0	2	4	6	symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN3NF	3_6_9	80	196155811200	980779057	85401	0	3	6	9	symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100
+NN3NF	4_8_12	140	5330960582800	26654802915	457451	0	4	8	12	symmetry_structural	true	7c135f7e3cdf4a53c3d9125f0fdd6dfd314cb7ebcbf8765f1ee5137ab9d3cc19	1.12.7	2	100

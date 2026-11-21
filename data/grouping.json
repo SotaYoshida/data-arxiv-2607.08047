@@ -101,7 +101,7 @@
  },
  {
   "id": "valence_sdpf_sdg_A42",
-  "label": "sd-pf-sdg",
+  "label": "sd-pf-sdg (SDPFSDG)",
   "nqubits": 124,
   "nonidentity_terms": 3763622,
   "methods": {

@@ -1,6 +1,38 @@
 {
- "II": {
-  "header": "\\begin{table*}[!t]\n\\caption{Achieved measurement-setting reductions $R_{\\mathrm{set}}=M/G$\nfor the same retained Hamiltonian terms, with nonidentity count $M$.\nA dash marks an unfinished greedy calculation. Input conditions and\nlimitations are described in Sec.~V.A.}\n\\label{tab:measurement_grouping}\n\\begin{ruledtabular}\n\\begin{tabular}{lrrrrr}\n & & & \\multicolumn{3}{c}{Reduction factor $R_{\\mathrm{set}}=M/G$} \\\\\n\\cline{4-6}\nModel space & $N_q$ & $M$ & QWC & FC greedy & Majorana greedy \\\\\n\\hline",
+ "_tables": "Keys name the table content. In the revised manuscript, coefficients is Table IV, grouping Table V, formulas Table VI, and finite_shot Table VII.",
+ "coefficients": {
+  "header": "\\begin{table}\n\\centering\n\\caption{Retained nonidentity term counts $M$, coefficient norms\n$\\lambda'$, and pairwise commutator coefficients $C_{\\rm pair}$ of the\nbenchmark Hamiltonians, with $\\lambda'$ in MeV and $C_{\\rm pair}$ in\n$\\mathrm{MeV}^2$. The identity does not contribute. No evolution time is\nrequired to define $C_{\\rm pair}$. The NN+3N rows use\n$E_{3\\max}=3e_{\\max}$. Input conventions are specified in\nAppendix~\\ref{app:pair_bound}.\n\\label{tab:Trotter_Error}}\n\\begin{ruledtabular}\n\\begin{tabular}{lrrrr}\nHamiltonian & $N_q$ & $M$ & $\\lambda'$ & $\\log_{10}C_{\\rm pair}$\\\\\n\\hline",
+  "footer": "\\end{tabular}\n\\end{ruledtabular}\n\\end{table}",
+  "sections": {
+   "valence": "Valence",
+   "NN": "No-core, NN",
+   "NN3NF": "No-core, NN+3N"
+  },
+  "labels": {
+   "valence_p": "CKpot ($p$)",
+   "valence_sd": "USDB ($sd$)",
+   "valence_psd": "YSOX ($psd$)",
+   "valence_pf": "GXPF1A ($pf$)",
+   "valence_sdpf_mu_A42": "SDPF-MU ($sdpf$)",
+   "valence_sdpf_sdg_A42": "SDPFSDG-MU",
+   "nn_e0": "$e_{\\max}=0$",
+   "nn_e1": "$e_{\\max}=1$",
+   "nn_e2": "$e_{\\max}=2$",
+   "nn_e3": "$e_{\\max}=3$",
+   "nn_e4": "$e_{\\max}=4$",
+   "nn_e5": "$e_{\\max}=5$",
+   "nn_e6": "$e_{\\max}=6$",
+   "nn_e7": "$e_{\\max}=7$",
+   "nn_e8": "$e_{\\max}=8$",
+   "nn_e9": "$e_{\\max}=9$",
+   "3nf_e1_compact_common": "$e_{\\max}=1$",
+   "3nf_e2_compact_common": "$e_{\\max}=2$",
+   "3nf_e3_compact_common": "$e_{\\max}=3$",
+   "3nf_e4_compact_common": "$e_{\\max}=4$"
+  }
+ },
+ "grouping": {
+  "header": "\\begin{table*}[!t]\n\\caption{Achieved measurement-setting reductions $R_{\\mathrm{set}}=M/G$\nfor the same retained Hamiltonian terms, with nonidentity count $M$.\nA dash marks an unfinished greedy calculation. Input conditions and\nlimitations are described in Sec.~\\ref{sec:measurement_grouping}.}\n\\label{tab:measurement_grouping}\n\\begin{ruledtabular}\n\\begin{tabular}{lrrrrr}\n & & & \\multicolumn{3}{c}{Reduction factor $R_{\\mathrm{set}}=M/G$} \\\\\n\\cline{4-6}\nModel space & $N_q$ & $M$ & QWC & FC greedy & Majorana greedy \\\\\n\\hline",
   "footer": "\\end{tabular}\n\\end{ruledtabular}\n\\end{table*}",
   "labels": {
    "valence_p": "$p$ (CK)",
@@ -19,13 +51,9 @@
    "3nf_e2_compact_common": "NN+3N, $e_{\\max}=2$"
   }
  },
- "III": "\\begin{table}%[h]\n\\centering\n\\caption{Logical T-count formulas for the eigenvalue algorithms.\nParameter definitions and the two Fig.~\\ref{fig:Qresource_summary} cost models\nare given in Sec.~\\ref{sec:cost_formulas}; derivations are in\nAppendices~\\ref{app:Tformulas} and \\ref{app:qubitized_QPE}.\n\\label{tab:Qresources_Methods}}\n\\setlength{\\tabcolsep}{1pt}\n\\begin{ruledtabular}\n  \\begin{tabular}{lc}\n  \\textbf{Method}  & \\textbf{T-count} \\\\ %& \\textbf{Additional overhead} \\\\\n  \\hline\n  QPE (Trotter) &  $N_\\mathrm{shot}\\left[T_{c\\hat{U}} (2^{N_a} - 1) + T_{\\mathrm{QFT}^\\dagger}\\right]$ \\\\\n  QPE (Qubitization) & $N_\\mathrm{shot} \\left[ T_{cW} (2^{N_a} - 1) + T_{\\rm PREP} + T_{\\mathrm{QFT}^\\dagger}\\right] $ \\\\ \n  QKrylov & $N_\\mathrm{shot} T_{\\hat{U}} N_{\\mathrm{circ}} \\,\\frac{4 N^3_{\\mathrm{iter}}+ N^2_{\\mathrm{iter}} - 3N_{\\mathrm{iter}}}{2}$ \\\\\n  ODMD & $N_\\mathrm{shot} \\, T_{c\\hat{U}} \\cdot N_{\\mathrm{snap}}(N_{\\mathrm{snap}} + 1)$ %  &  state prep., SVD (classical) \n  \\end{tabular}\n\\end{ruledtabular}\n\\end{table}",
- "IV": {
-  "header": "\\begin{table}\n\\centering\n\\caption{Evaluated pairwise commutator coefficients for the retained\nHamiltonians. The identity does not contribute. No evolution time is required to define\n$C_{\\rm pair}$. The NN+3N rows use direct recoupling with $E_{3\\max}=3e_{\\max}$.\nInput conventions are specified in Appendix B.\n\\label{tab:Trotter_Error}}\n\\begin{ruledtabular}\n\\begin{tabular}{lrr}\nInteraction / space & $N_q$ & $\\log_{10}(C_{\\rm pair}/\\mathrm{MeV}^2)$\\\\\\hline",
-  "footer": "\\end{tabular}\n\\end{ruledtabular}\n\\end{table}"
- },
- "VI": {
-  "header": "\\begin{table*}%[t]\n\\caption{Resources for one ground-state estimate at $r=4$.\nThe Success column gives the number of estimates within $100$~keV of $E_0$\nin 1,200 independent trials for each nucleus and method.\nQKrylov uses Majorana pairing.}\n\\label{tab:r21_fixed_sampling}\n\\begin{ruledtabular}\n\\begin{tabular}{llrrrrrrrr}\nNucleus & Method & Size & $\\delta t$ ($\\mathrm{MeV}^{-1}$) & Settings & Shots/setting & Total shots & Max.\\ substeps & $W/W_{\\rm QPE}$ & Success \\\\\n\\hline",
+ "formulas": "\\begin{table}%[h]\n\\centering\n\\caption{Logical T-gate count formulas for the eigenvalue algorithms.\nParameter definitions and the cost models of Figs.~\\ref{fig:Qresource_summary}\nand \\ref{fig:QPE_fixed_accuracy} are summarized in Table~\\ref{tab:cost_model}; derivations are in\nAppendices~\\ref{app:Tformulas} and \\ref{app:qubitized_QPE}.\n\\label{tab:Qresources_Methods}}\n\\begin{ruledtabular}\n  \\begin{tabular}{lc}\n  \\textbf{Method}  & \\textbf{T-gate count} \\\\ %& \\textbf{Additional overhead} \\\\\n  \\hline\n  QPE (Trotter) &  $N_\\mathrm{shot}\\left[T_{c\\hat{U}} (2^{N_a} - 1) + T_{\\mathrm{QFT}^\\dagger}\\right]$ \\\\\n  QPE (Qubitization) & $N_\\mathrm{shot} \\left[ T_{cW} (2^{N_a} - 1) + T_{\\rm PREP} + T_{\\mathrm{QFT}^\\dagger}\\right] $ \\\\\n  QKrylov & $N_\\mathrm{shot} T_{\\hat{U}} N_{\\mathrm{circ}} \\,\\frac{4 N^3_{\\mathrm{iter}}+ N^2_{\\mathrm{iter}} - 3N_{\\mathrm{iter}}}{2}$ \\\\\n  ODMD & $N_\\mathrm{shot} \\, T_{c\\hat{U}} \\cdot N_{\\mathrm{snap}}(N_{\\mathrm{snap}} + 1)$ %  &  state prep., SVD (classical)\n  \\end{tabular}\n\\end{ruledtabular}\n\\end{table}",
+ "finite_shot": {
+  "header": "\\begin{table*}%[t]\n\\caption{Finite-shot resources per ground-state energy estimate for $^{6}$He and $^{22}$O using ideal circuits.\nSize counts phase qubits for QPE, nonzero sampling times for ODMD, and basis states for QKrylov.\nFor each nucleus and method, Shots/setting gives the number of repetitions\nchosen for each circuit before validation.\nThe number of circuit executions per estimate (Total shots) equals the number of\ndistinct circuits (Settings) times the shots per setting.\nFor QPE we return the sample lower quartile, chosen because the 25th percentile of\neach calibrated readout distribution lies within the target energy window.\nQKrylov uses greedy Majorana pairing.\nEach interval $\\delta t$ comprises $r=4$ first-order Trotter substeps.\nMax.\\ substeps counts sequential substeps in the longest circuit.\n$W$ counts time-evolution Pauli rotations over all shots, with weight one for uncontrolled rotations\nand two for controlled rotations. The ratio $W/W_{\\rm QPE}$ uses QPE for the same nucleus as its reference.\nSuccess gives the number of estimates within $100$~keV of the exact ground-state energy in 1,200 independent trials per row\n(target success probability $95\\%$).}\n\\label{tab:r21_fixed_sampling}\n\\begin{ruledtabular}\n\\begin{tabular}{llrrrrrrrr}\nNucleus & Method & Size & $\\delta t$ ($\\mathrm{MeV}^{-1}$) & Settings & Shots/setting & Total shots & Max.\\ substeps & $W/W_{\\rm QPE}$ & Success \\\\\n\\hline",
   "footer": "\\end{tabular}\n\\end{ruledtabular}\n\\end{table*}"
  }
 }

@@ -236,7 +236,8 @@ def estimate_case(row, delta_energy, settings):
     }
 
 
-# Data symbols and fit lines in Figure 6(a,b).
+# Data symbols and fit lines of the fixed-parameter panels (Fig. 7 of the revised
+# manuscript; Fig. 6(a,b) of the earlier four-panel figure).
 PAPER_MARKER_ALPHA = 0.85
 PAPER_LINE_ALPHA = 0.80
 
@@ -273,7 +274,7 @@ def plot_results(results, output):
             for family, label, marker, color in families:
                 rr = sorted((r for r in results if r["family"] == family
                              and r["energy_error_MeV"] == energy), key=lambda r: r["nqubits"])
-                # Figure 6 uses translucent symbols and outlines the NN+3N cases.
+                # Figs. 7 and 8 use translucent symbols and outline the NN+3N cases.
                 symbol = dict(marker=marker, ms=6.5, markeredgewidth=0.8,
                               **_series_colors(color, family == "NN3NF"))
                 ax.plot([r["nqubits"] for r in rr], [r["ratio"] for r in rr],
@@ -300,19 +301,41 @@ def plot_results(results, output):
         plt.close(fig)
 
 
-def figure6_axes(panel, title, *, figsize=(4.8, 3.55), label_anchors=None):
-    """Use fixed margins so all four PDFs line up when included at equal width."""
+def figure6_axes(panel, title, *, figsize=(4.8, 3.55), label_anchors=None, label=None,
+                 ylim=(0, 29), yticks=range(0, 29, 4), ylabel="T-gate count",
+                 title_outside=False, right_margin=None):
+    """Use fixed margins so all panel PDFs line up when included at equal width.
+
+    ``panel`` selects the layout anchors; ``label`` is the printed panel letter
+    and defaults to ``panel``. The vertical axis holds log10 values, so
+    ``ylim`` and ``yticks`` are exponents of ten. Margins are fixed in inches,
+    so smaller panels keep the same room for tick and axis labels; at the
+    default size they equal the original fractional margins. With
+    ``title_outside`` the panel label is placed above the axes, which leaves
+    the plotting area to the data and legends in small panels.
+    """
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=figsize)
-    fig.subplots_adjust(left=0.154, right=0.967, bottom=0.185, top=0.965)
-    label_pos = (label_anchors or {}).get(panel, (0.023, 0.965))
-    ax.text(*label_pos, f"({panel}) {title}", transform=ax.transAxes,
-            ha="left", va="top", fontsize=11.5,
-            bbox=dict(facecolor="white", edgecolor="none", alpha=0.95, pad=0.6))
-    ax.set(xscale="log", xlim=(1, 10000), ylim=(0, 29),
-           xlabel="Number of system qubits $N_q$", ylabel="T-gate count")
-    ticks = range(0, 29, 4)
-    ax.set_yticks(ticks, [rf"$10^{{{tick}}}$" for tick in ticks])
+    width, height = figsize
+    # Inch margins equal the original fractions of the 4.8 x 3.55 in panels,
+    # so the default size reproduces the earlier figures exactly.
+    top_margin = 0.32 if title_outside else 0.035 * 3.55
+    # ``right_margin`` (inches) narrows the gap to a neighboring panel; it
+    # must leave room for half of the last x tick label.
+    right = 0.033 * 4.8 if right_margin is None else right_margin
+    fig.subplots_adjust(left=0.154 * 4.8 / width, right=1 - right / width,
+                        bottom=0.185 * 3.55 / height, top=1 - top_margin / height)
+    text = f"({label or panel}) {title}"
+    if title_outside:
+        ax.set_title(text, loc="left", fontsize=11.5, pad=5)
+    else:
+        label_pos = (label_anchors or {}).get(panel, (0.023, 0.965))
+        ax.text(*label_pos, text, transform=ax.transAxes,
+                ha="left", va="top", fontsize=11.5,
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.95, pad=0.6))
+    ax.set(xscale="log", xlim=(1, 10000), ylim=ylim,
+           xlabel="Number of system qubits $N_q$", ylabel=ylabel)
+    ax.set_yticks(list(yticks), [rf"$10^{{{tick}}}$" for tick in yticks])
     ax.tick_params(axis="both", labelsize=11)
     ax.grid(True, ls="--", lw=0.65, color="0.83")
     ax.set_axisbelow(True)
@@ -320,12 +343,19 @@ def figure6_axes(panel, title, *, figsize=(4.8, 3.55), label_anchors=None):
 
 
 def figure6_legend(fig, panel, method_handles, *, anchors=None, family_anchors=None,
-                   fontsize=10.5, fit_exponents=None):
-    """Show the methods and applicable interaction families in each panel."""
+                   fontsize=10.5, fit_exponents=None, three_body=None, family_ncol=None):
+    """Show the methods and applicable interaction families in each panel.
+
+    ``three_body`` adds the NN+3N key; by default it follows the no-core
+    panels (b) and (d) of the combined four-panel layout. ``family_ncol``
+    sets the columns of the interaction key (default: one row).
+    """
     from matplotlib.lines import Line2D
     ax = fig.axes[0]
     styles = [("--", "none", "NN")]
-    if panel in ("b", "d"):
+    if three_body is None:
+        three_body = panel in ("b", "d")
+    if three_body:
         styles.append(("-.", "black", "NN+3N"))
     family_handles = [
         Line2D([], [], color="0.45", marker="o", ls=ls, lw=1, markersize=6,
@@ -336,7 +366,7 @@ def figure6_legend(fig, panel, method_handles, *, anchors=None, family_anchors=N
                  columnspacing=1, labelspacing=0.32, borderpad=0.25, borderaxespad=0)
     family_anchor = (family_anchors or {}).get(panel, (0.02, 0.845 if panel in ("a", "b") else 0.745))
     family_key = ax.legend(handles=family_handles, loc="upper left", bbox_to_anchor=family_anchor,
-                           ncol=len(family_handles), **style)
+                           ncol=family_ncol or len(family_handles), **style)
     ax.add_artist(family_key)
     anchor = (anchors or {}).get(panel, (0.978, 0.038))
     if fit_exponents is not None:
@@ -345,17 +375,18 @@ def figure6_legend(fig, panel, method_handles, *, anchors=None, family_anchors=N
 
         # All offsets are in type points, so the key scales with the figure.
         families = list(fit_exponents)
-        step = 1.17 * fontsize
-        width = (10.8 if len(families) == 1 else 15.2) * fontsize
+        step = 1.27 * fontsize
+        width = (11.4 if len(families) == 1 else 15.9) * fontsize
         key = DrawingArea(width, (len(method_handles) + 1) * step, 0, 0)
         top = (len(method_handles) + 0.5) * step
         def label(x, y, value, align="left"):
             key.add_artist(Text(x, y, value, ha=align, va="center", fontsize=fontsize))
 
         label(0, top, r"$T \propto N_q^{\alpha}$")
-        centers = [9.7 * fontsize, 13.3 * fontsize]
+        centers = [9.8 * fontsize, 13.7 * fontsize]
         for col, family in enumerate(families):
-            label(centers[col], top, "NN+3N" if family == "NN3NF" else "NN", "center")
+            header = r"$\alpha_{\mathrm{NN+3N}}$" if family == "NN3NF" else r"$\alpha_{\mathrm{NN}}$"
+            label(centers[col], top, header, "center")
         for i, handle in enumerate(method_handles):
             y = top - (i + 1) * step
             key.add_artist(Line2D([0.45 * fontsize], [y], marker=handle.get_marker(),
@@ -373,10 +404,53 @@ def figure6_legend(fig, panel, method_handles, *, anchors=None, family_anchors=N
               ncol=2 if panel in ("a", "b") else 1, **style)
 
 
+# Vertical range of the fixed-accuracy panels, in powers of ten. The largest
+# Trotter estimates exceed 1e28, so the range extends above the
+# fixed-parameter panels to keep every evaluated point inside the axes.
+FIXED_ACCURACY_YLIM = (5, 30.5)
+FIXED_ACCURACY_YTICKS = range(8, 30, 4)
+
+# File names of the split layout: one figure for the fixed-accuracy QPE
+# comparison, with panels (a) valence, (b) no-core, and (c) cost ratios.
+SPLIT_FILENAMES = {
+    "valence": "QPE_fixed_accuracy_valence.pdf",
+    "nocore": "QPE_fixed_accuracy_nocore.pdf",
+    "ratio": "QPE_fixed_accuracy_ratio.pdf",
+}
+
+# The split figure places its three panels side by side, each printed at
+# about 0.32 of the text width. The smaller canvas keeps the printed text
+# near 7 pt. Panel titles sit above the axes, and the interaction key is a
+# single column at the upper left, where the data leave room. Anchors are
+# fractions of the axes, keyed by layout panel.
+SPLIT_LAYOUT = {
+    "figsize": (3.2, 3.1),
+    "legend_fontsize": 9.5,
+    "title_outside": True,
+    "family_ncol": 1,
+    "label_anchors": {"c": (0.03, 0.965), "d": (0.03, 0.965)},
+    # Method key: lower-right corner. The valence data end at about 60% of
+    # the height, so its key sits above them; the no-core key stays low.
+    "legend_anchors": {"c": (0.975, 0.70), "d": (0.975, 0.035)},
+    "family_anchors": {"c": (0.025, 0.975), "d": (0.025, 0.975)},
+    "ratio_ylim": (0, 18),
+    "right_margin": 0.12,
+}
+
+
 def plot_absolute_counts(results, output_dir, energy_error, *, figsize=(4.8, 3.55),
                          label_anchors=None, legend_anchors=None, family_anchors=None,
-                         legend_fontsize=10.5, show=False):
-    """Fig. 6(c,d): evaluated costs at one common absolute energy error."""
+                         legend_fontsize=10.5, show=False, display_labels=None,
+                         filenames=None, ylim=FIXED_ACCURACY_YLIM,
+                         yticks=FIXED_ACCURACY_YTICKS, title_outside=False,
+                         family_ncol=None, right_margin=None):
+    """Evaluated QPE costs at one common absolute energy error.
+
+    By default the panels are (c) and (d) of the combined four-panel figure.
+    ``display_labels`` maps the layout keys "c" and "d" to printed letters,
+    and ``filenames`` maps "valence" and "nocore" to output names; the split
+    layout prints (a) and (b) while reusing the (c,d) anchors.
+    """
     import matplotlib.pyplot as plt
     from matplotlib.lines import Line2D
 
@@ -385,15 +459,24 @@ def plot_absolute_counts(results, output_dir, energy_error, *, figsize=(4.8, 3.5
         raise ValueError("figure6_energy_MeV must be in energy_errors_MeV.")
     value, unit = (energy_error, "MeV") if energy_error >= 1 else (1000 * energy_error, "keV")
     energy_label = rf"$\Delta E={value:g}$ {unit}"
-    methods = [("T_Trotter", "Trotter (pair bound)", "s", "#af4048"),
+    # Compact panels use short method names; their caption states that the
+    # Trotter step counts come from the pairwise commutator bound.
+    trotter_label = "Trotter" if title_outside else "Trotter (pair bound)"
+    methods = [("T_Trotter", trotter_label, "s", "#af4048"),
                ("T_walk", "Qubitization", "o", "#3768a6")]
     outputs = []
     with plt.rc_context(PAPER_PLOT_STYLE):
         for valence in (True, False):
             panel = "c" if valence else "d"
             space = "Valence" if valence else "No-core"
-            fig, ax = figure6_axes(panel, f"{space}, QPE\n{energy_label}", figsize=figsize,
-                                   label_anchors=label_anchors)
+            # A title above the axes has room for one line only.
+            title = (f"{space}, {energy_label}" if title_outside
+                     else f"{space}, QPE\n{energy_label}")
+            fig, ax = figure6_axes(panel, title, figsize=figsize,
+                                   label_anchors=label_anchors,
+                                   label=(display_labels or {}).get(panel),
+                                   ylim=ylim, yticks=yticks, title_outside=title_outside,
+                                   right_margin=right_margin)
             families = ["valence"] if valence else ["NN", "NN3NF"]
             for family in families:
                 rows = sorted((r for r in selected if r["family"] == family),
@@ -412,10 +495,12 @@ def plot_absolute_counts(results, output_dir, energy_error, *, figsize=(4.8, 3.5
                               **_series_colors(color))
                        for _, label, marker, color in methods]
             figure6_legend(fig, panel, handles, anchors=legend_anchors,
-                           family_anchors=family_anchors, fontsize=legend_fontsize)
-            filename = ("Tgate_counts_valence_TrotterQubitization.pdf" if valence
-                        else "Tgate_counts_nocore_TrotterQubitization.pdf")
-            path = Path(output_dir) / filename
+                           family_anchors=family_anchors, fontsize=legend_fontsize,
+                           three_body=not valence, family_ncol=family_ncol)
+            names = {"valence": "Tgate_counts_valence_TrotterQubitization.pdf",
+                     "nocore": "Tgate_counts_nocore_TrotterQubitization.pdf",
+                     **(filenames or {})}
+            path = Path(output_dir) / names["valence" if valence else "nocore"]
             fig.savefig(path, transparent=True)
             if show:
                 plt.show()
@@ -424,7 +509,85 @@ def plot_absolute_counts(results, output_dir, energy_error, *, figsize=(4.8, 3.5
     return outputs
 
 
-def run(results_path=None, output_dir=None, settings=None, paper_figures=None, figure6_layout=None):
+def plot_ratio_panel(results, output, *, figsize=(4.8, 3.55), label="c", label_anchor=None,
+                     legend_fontsize=10.5, ylim=(0, 16), yticks=range(0, 15, 2), show=False,
+                     title_outside=False, right_margin=None):
+    """Trotter-to-qubitization ratios drawn in the frame of the T-count panels.
+
+    The axes margins and horizontal range match ``figure6_axes`` so that this
+    panel lines up with the absolute counts of the split figure. Colors and
+    markers distinguish interaction families; line styles distinguish the
+    target energy errors.
+    """
+    import matplotlib.pyplot as plt
+    from matplotlib.lines import Line2D
+    # A small panel with the title above the axes uses short family names;
+    # the caption states that the NN and NN+3N series are no-core spaces.
+    no_core = "" if title_outside else "No-core "
+    families = [("valence", "Valence", "X", "#af4048"),
+                ("NN", f"{no_core}NN", "s", "#3768a6"),
+                ("NN3NF", f"{no_core}NN+3N", "^", "#397c50")]
+    energies = sorted({r["energy_error_MeV"] for r in results}, reverse=True)
+    styles = [":", "--", "-"]
+    if len(energies) > len(styles):
+        raise ValueError("The ratio panel supports at most three target errors.")
+    # Keep the upper part of the axes free for the panel label and the keys.
+    top = max(math.log10(r["ratio"]) for r in results)
+    if top > (0.62 if title_outside else 0.65) * ylim[1]:
+        raise ValueError(f"Raise ylim: the largest ratio is 10^{top:.2f}.")
+    with plt.rc_context(PAPER_PLOT_STYLE):
+        fig, ax = figure6_axes("c", "Trotter/qubitization", figsize=figsize,
+                               label_anchors={"c": label_anchor or (0.023, 0.965)},
+                               label=label, ylim=ylim, yticks=yticks,
+                               ylabel=r"$T_{\rm QPE}^{\rm Trotter}/T_{\rm QPE}^{\rm walk}$",
+                               title_outside=title_outside, right_margin=right_margin)
+        family_handles = []
+        for energy, style in zip(energies, styles):
+            for family, name, marker, color in families:
+                rows = sorted((r for r in results if r["family"] == family
+                               and r["energy_error_MeV"] == energy), key=lambda r: r["nqubits"])
+                symbol = dict(marker=marker, ms=6, markeredgewidth=0.8,
+                              **_series_colors(color, family == "NN3NF"))
+                # Connect evaluated cases only; do not extrapolate a fit.
+                ax.plot([r["nqubits"] for r in rows], [math.log10(r["ratio"]) for r in rows],
+                        ls=style, lw=1, **symbol)
+                if energy == energies[0]:
+                    family_handles.append(Line2D([], [], ls="", label=name, **symbol))
+        key_style = dict(framealpha=0.95, facecolor="white", edgecolor="none",
+                         fontsize=legend_fontsize, handlelength=1.6, handletextpad=0.45,
+                         labelspacing=0.28, borderpad=0.3, borderaxespad=0.3)
+        # With the title above the axes, both keys share the empty band
+        # above the data; otherwise the energy key sits at the lower right.
+        family_key = ax.legend(handles=family_handles, loc="upper left",
+                               bbox_to_anchor=(0.0, 1.0 if title_outside else 0.88),
+                               **key_style)
+        ax.add_artist(family_key)
+        def energy_label(e):
+            return f"{e:g} MeV" if e >= 1 else f"{1000*e:g} keV"
+        ax.legend(handles=[Line2D([], [], color="0.25", ls=s, label=energy_label(e))
+                           for e, s in zip(energies, styles)],
+                  title=r"$\Delta E$", title_fontsize=legend_fontsize,
+                  loc="upper right" if title_outside else "lower right", **key_style)
+        fig.savefig(output, transparent=True)
+        if show:
+            plt.show()
+        plt.close(fig)
+    return Path(output)
+
+
+def run(results_path=None, output_dir=None, settings=None, paper_figures=None, figure6_layout=None,
+        split_layout=True):
+    """Write the cost report, the QSVT table, and the QPE figures.
+
+    The combined layout gives panels (c,d) of the earlier four-panel figure
+    and a separate ratio figure. With ``split_layout`` the same results are
+    also drawn as Fig. 8 of the revised manuscript: (a) valence and (b)
+    no-core T-gate counts at ``figure6_energy_MeV`` and (c) the ratios at all
+    target errors. The panels use ``SPLIT_LAYOUT`` for three panels side by
+    side; pass a dictionary with the same keys as ``split_layout`` to change
+    it. Names such as ``figure6_energy_MeV`` keep the earlier numbering so
+    that existing settings and reports remain valid.
+    """
     repo = Path(__file__).resolve().parents[1]
     results_path = Path(results_path) if results_path else repo / "data" / "operator_summaries.json"
     output_dir = Path(output_dir) if output_dir else repo / "build"
@@ -476,8 +639,30 @@ def run(results_path=None, output_dir=None, settings=None, paper_figures=None, f
     table.write_text(normalization_table_tex(qsvt))
     pdf = output_dir / "qpe_Tcount_ratio.pdf"
     plot_results(results, pdf)
-    outputs = [pdf] + plot_absolute_counts(results, output_dir, figure_energy,
-                                           **(figure6_layout or {}))
+    layout = dict(figure6_layout or {})
+    outputs = [pdf] + plot_absolute_counts(results, output_dir, figure_energy, **layout)
+    if split_layout:
+        split = dict(SPLIT_LAYOUT if split_layout is True else split_layout)
+        ratio_ylim = split.pop("ratio_ylim", (0, 16))
+        outputs += plot_absolute_counts(results, output_dir, figure_energy, **split,
+                                        display_labels={"c": "a", "d": "b"},
+                                        filenames=SPLIT_FILENAMES)
+        outputs.append(plot_ratio_panel(
+            results, output_dir / SPLIT_FILENAMES["ratio"],
+            figsize=split["figsize"],
+            label_anchor=split["label_anchors"].get("c"),
+            legend_fontsize=split["legend_fontsize"],
+            title_outside=split.get("title_outside", False),
+            right_margin=split.get("right_margin"),
+            ylim=ratio_ylim))
+        report["split_figure"] = {
+            "panels": {"a": SPLIT_FILENAMES["valence"], "b": SPLIT_FILENAMES["nocore"],
+                       "c": SPLIT_FILENAMES["ratio"]},
+            "energy_error_MeV_ab": figure_energy,
+            "energy_errors_MeV_c": settings["energy_errors_MeV"],
+            "log10_ylim_ab": list(FIXED_ACCURACY_YLIM),
+        }
+        (output_dir / "qpe_cost_comparison.json").write_text(json.dumps(report, indent=2) + "\n")
     if paper_figures is not None:
         import shutil
         for output in outputs:
