@@ -27,4 +27,21 @@ For Figs. 9, 12 and 14, the plotting notebook uses stored angular-momentum weigh
 
 To run the Julia counter in notebook 1, install Julia 1.12 and run `julia --project=lib -e 'using Pkg; Pkg.instantiate()'` from this directory. Set `run_julia = True` in the final cell. The default examples are SDPFSDG (124 qubits, 3,764,359 structural strings) and NN+3N at $e_{\max}=1$ (51,377 structural strings). Set `full_sweep = True` for all structural rows.
 
+## Optional finite-shot replay
+
+`lib/finite_shot/replay.py` recomputes all 7,200 energy estimates of Table VII from the Hamiltonians in `data/finite_shot_inputs.json` and the protocols in `data/finite_shot.json`, and checks them against `data/finite_shot_energies.npz`. It needs Qiskit in addition to the requirements above. From this directory, run
+
+```sh
+python -m pip install qiskit==2.3.0
+python lib/finite_shot/replay.py
+```
+
+The run takes about five minutes on a multicore laptop and prints one line per nucleus and method.
+
+## Optional NN+3N mapping check
+
+`lib/validation/nn3n_reference_check.py` maps the $e_{\max}=1$ NN+3N Hamiltonian (SRG $2.0\,\mathrm{fm}^{-1}$) with NuQuLib's direct implementation and compares it term by term with the published operator in `data/small_operators.npz`. It needs an installed NuQuLib and the interaction files in its `tests/interaction_file/` directory, given as the only argument. The run takes about 1.5 minutes and writes `data/validation/nn3n_reference_check.json`.
+
+## Verification
+
 Run `shasum -a 256 -c SHA256SUMS` (macOS) or `sha256sum -c SHA256SUMS` (Linux) from `data/` to verify the inputs. NuQuLib-derived code is covered by [its MIT license](lib/NuQuLib-LICENSE).

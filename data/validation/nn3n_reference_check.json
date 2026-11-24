@@ -1,0 +1,30 @@
+{
+  "purpose": "Independent check of the factored NN+3N recoupling and coefficient accumulation",
+  "published_operator": "3nf_e1_compact_common",
+  "nqubits": 16,
+  "emax": 1,
+  "E3max": 3,
+  "SRG_lambda_fm_inv": 2.0,
+  "hw_MeV": 20,
+  "input_nn": "TwBME-HO_NN-only_N3LO_EM500_srg2.0_hw20_emax1_e2max2.kshell.snt",
+  "input_nn_sha256": "3b9a8d412c6b0dae28569a89411a992d8ec6849db3dd72aaa50399771ef593fb",
+  "input_3nf": "ThBME_srg2.0_ramp40-5-36-7-32-9-28-11-24_N3LO_EM500_c1_-0.81_c3_-3.2_c4_5.4_cD_0.7_cE_-0.06_LNL2_650_500_IS_hw20from30_ms1_2_3.me3j.gz",
+  "input_3nf_sha256": "1709142983cf20f50da7e6b55752f1746a96813974562b1dbac11d04471c787e",
+  "coefficient_cutoff_MeV": 1e-08,
+  "reference_nonidentity_terms": 51376,
+  "published_nonidentity_terms": 51376,
+  "terms_only_in_reference": 0,
+  "terms_only_in_published": 0,
+  "max_abs_coefficient_difference_MeV": 1.4619590427145113e-08,
+  "max_rel_coefficient_difference": 0.0007040350031562571,
+  "reference_identity_coefficient_MeV": 59.31959779019893,
+  "published_identity_coefficient_MeV": 59.319597759663715,
+  "reference_lambda_nonidentity_MeV": 738.5767027910825,
+  "published_lambda_nonidentity_MeV": 738.5767034374728,
+  "mapping_seconds": 81.1,
+  "environment": {
+    "python": "3.12.11",
+    "numpy": "1.26.4",
+    "qiskit": "2.3.0"
+  }
+}
