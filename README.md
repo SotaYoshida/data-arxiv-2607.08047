@@ -21,7 +21,7 @@ Open `03_figures_tables.ipynb` and select **Restart Kernel and Run All Cells**. 
 | `02_spectral_tutorial.ipynb` | Reconstructs the QPE distributions for $^3$n and $^6$He (Figs. 10 and 11) and checks all 18 product-formula errors for Fig. 13. |
 | `03_figures_tables.ipynb` | Generates the numerical figures and tables from the counts, Hamiltonian summaries, sector matrices and simulation results in `data/`. |
 
-For Figs. 9, 12 and 14, the plotting notebook uses stored angular-momentum weights, spectra and VQE histories. For Table VII, it computes success counts and confidence bounds from the 7,200 supplied energy estimates. [The data guide](data/README.md) gives the units, model spaces and figure-to-file mapping.
+For Fig. 12, notebook 3 plots the fermionic $^{22}$O USDB calculation from the NuQuLib tutorial. The archive includes the full FCI reference spectrum with angular momenta, the QKrylov Ritz histories and both ODMD fits. Figs. 9 and 14 use stored angular-momentum weights and VQE histories. For Table VII, it computes success counts and confidence bounds from the 7,200 supplied energy estimates. [The data guide](data/README.md) gives the units, model spaces and figure-to-file mapping.
 
 ## Optional structural counts
 
